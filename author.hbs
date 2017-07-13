@@ -1,0 +1,62 @@
+{{!< default}}
+
+{{> header}}
+{{> menu}}
+
+<main role="main"> 
+  <div class="wrapper_purus">
+      {{#author}}
+      <section class="banner_purus">
+          {{#if image}}
+            <div class="authorimage_purus" style="background-image: url({{image}})"></div>
+          {{/if}}
+          <h1 class="authorname_purus">{{name}}</h1>
+          {{#if bio}}<p class="authorbio_purus">{{bio}}</p>{{/if}}
+          {{#if location}}<h5>{{location}}</h5>{{/if}}
+          {{#if website}}<h5><a href="{{website}}">{{website}}</a></h5>{{/if}}
+          <br>
+          {{#if twitter}}<a class="social-icon_purus" href="{{twitter_url}}"><i class="fa fa-twitter"><span class="hidden_purus">{{twitter}}</span></i></a>{{/if}}
+      {{#if facebook}}<a class="social-icon_purus" href="{{facebook_url}}"><i class="fa fa-facebook"><span class="hidden_purus">Follow me on Facebook</span></i></a>{{/if}}
+      </section>
+       {{/author}}
+       <p class="number-posts_purus">Number of posts&#58;<span>{{pagination.total}}</span></p>
+
+      {{#foreach posts}}
+
+        <article class="{{post_class}} article-list_purus">
+            <ul>
+                <li><time>{{date format='DD MMM YYYY'}}</time></li>    
+            </ul>
+            <h2 class="posttitle_purus">
+                {{#if featured}}<span class="featured_purus"><i class="fa fa-star"></i></span>{{/if}}
+                <a href="{{{url}}}" rel="bookmark">{{title}}</a>
+            </h2>
+            <div class="postcontent_purus">
+                <p>{{excerpt characters="80"}}&hellip;</p>
+            </div>
+            {{#if tags}}
+            <span class="tags-index_purus"><i class="fa fa-tag"></i> {{tags separator=",&ensp;"}}</span>
+            {{/if}}
+        </article>
+    
+    {{/foreach}}
+      
+    {{#if pagination}}
+    {{{pagination}}}
+	{{/if}}
+      
+  </div>
+</main>
+ 
+<footer class="main-footer_purus" style="background-image: url({{author.cover}})">
+    <div class="wrapper-footer_purus">
+        <div class="center-footer_purus">
+            <h6>Recommend this author</h6>
+            <a target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><i class="fa fa-twitter"></i><span class="hidden_purus">Twitter</span></a> 
+            <a target="_blank" href="http://www.facebook.com/sharer.php?u={{url absolute="true"}}"><i class="fa fa-facebook"></i><span class="hidden_purus">Facebook</span></a>
+            <a target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}"><i class="fa fa-google-plus"></i> <span class="hidden_purus">Google+</span></a>
+        </div>
+    </div>
+    {{> footer}}
+    
+</footer>

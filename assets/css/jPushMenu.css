@@ -1,0 +1,79 @@
+/* General styles for all menus */
+.cbp-spmenu { position: fixed; }
+
+.cbp-spmenu-vertical {
+	height: 100%;
+	top: 0rem;
+}
+
+.cbp-spmenu-left { left: -260px ; z-index: 100000; }
+
+.cbp-spmenu-left.cbp-spmenu-open { left: 0px; }
+
+/* Push classes applied to the body */
+.cbp-spmenu-push {
+	overflow-x: hidden;
+	position: relative;
+	left: 0; 
+}
+
+.cbp-spmenu-push-toright { left: 260px; }
+
+.cbp-spmenu-push-toleft { left: -260px; }
+
+.mobile .cbp-spmenu-open { overflow-y: scroll; z-index: 100000; ;}
+
+/* Transitions */
+.cbp-spmenu,
+.cbp-spmenu-push {
+    -webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease; 
+}
+
+/* Example media queries */
+
+@media screen and (max-width: 55.1875em){
+
+	.cbp-spmenu-horizontal {
+		font-size: 75%;
+		height: 110px;
+	}
+
+	.cbp-spmenu-top { top: -110px; }
+
+	.cbp-spmenu-bottom { bottom: -110px; }
+}
+
+@media screen and (max-height: 26.375em){
+
+	.cbp-spmenu-vertical {
+		font-size: 90%;
+		width: 190px;
+	}
+
+	.cbp-spmenu-left,
+	.cbp-spmenu-push-toleft {
+		left: -190px;
+	}
+
+	.cbp-spmenu-right {	right: -190px; }
+
+	.cbp-spmenu-push-toright { left: 190px; }
+}
+
+@media screen and (max-height: 600px) {
+    
+    .cbp-spmenu-vertical {
+		font-size: 90%;
+		width: 190px;
+	}
+
+	.cbp-spmenu-left,
+	.cbp-spmenu-push-toleft { left: -230px; }
+
+	.cbp-spmenu-right { right: -230px; }
+
+	.cbp-spmenu-push-toright { left: 230px; }
+
+}

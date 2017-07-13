@@ -1,0 +1,66 @@
+{{!< default}}
+
+{{> header}}
+{{> menu}}
+
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js
+"></script>
+        
+        <script>
+            //Wait for other things to be loaded so the site doesn't wait on the search
+            $(document).ready(function() {
+                //Go grab all the posts on the blog, but only the slug and title fields
+                //That helps limit the amount of data sent and stored locally
+                $.get(ghost.url.api('posts', {limit: "all", fields: "slug,title"})).done(function(data) {
+                    //add all the data returned to a variable
+                    var searchData = data.posts; 
+
+                    //New bloodhound to make it searchable
+                    var search = new Bloodhound({
+                      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+                      queryTokenizer: Bloodhound.tokenizers.whitespace,
+                      local: searchData
+                    });
+
+                    //Build the typeahead
+                    $('#site-search .typeahead').typeahead(null, {
+                          name: 'search',
+                          //source is the bloodhound variable
+                          source: search,
+                          templates: {
+                            empty: [
+                                '<div class="empty-message">',
+                                'unable to find any post that match the current query',
+                                '</div>'
+                            ].join('\n'),
+                            suggestion: function(data) {
+                                return '<a href="{{@blog.url}}/' + data.slug + '"><h2>' + data.title + '</h2></a>';
+                            }
+                        }
+                    }); 
+
+                    //Now show the search bar since getting data was successful
+                    $('#site-search').show();
+                }).fail(function() {
+                    //If the get request errors out, put an error in the console
+                    console.log("Error getting Ghost API Data");
+                });
+            });
+        </script>
+
+<main role="main">
+    <div class="wrapper_purus">
+        <section class="banner_purus">
+            <h1>Search</h1>
+        </section>
+
+        <section id="nav">
+            {{navigation}}
+        </section>
+        
+        <div id="site-search" style="display:none; background-image: url({{asset "img/search.png"}})"> <!--Hide this until getting data is successful-->
+            <input id="search-field" class="typeahead" type="text" placeholder="Search">
+        </div>
+
+    </div>
+</main>            

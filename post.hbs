@@ -1,0 +1,142 @@
+{{!< default}}
+{{#post}}
+<header id="header" class="default {{#if image}}super-header{{/if}}">
+    <button class="toggle-menu menu-left push-body">
+        <i class="fa fa-bars"></i>
+            {{#if @blog.logo}}
+                <a class="logo_purus" href="{{@blog.url}}">
+                    <img src="{{@blog.logo}}" alt="{{@blog.title}}" />
+                </a>
+            {{/if}}
+    </button> 
+     
+    {{#if author}}
+        <div class="header-author_purus">
+            {{#if author.image}}
+                <div class="authorimage_purus" style="background-image: url({{author.image}})"></div>
+            {{/if}}
+            <h4 class="authorname_purus"><a href="{{@blog.url}}/author/{{author.slug}}">{{author.name}}</a></h4>
+        </div> 
+    {{/if}}
+    <div class="post-reading-time"></div>
+</header>
+
+{{> menu}}
+
+<main role="main">
+    <article class="{{post_class}} article_purus">
+        <header class="postheader_purus {{#if image}} img-fullpage" style="background-image: url({{image}}){{else}}no-cover{{/if}}" >
+            <div class="vertical_purus">
+                <div class="inner_purus">
+                    <h1 class="posttitle_purus">{{title}}</h1>
+                    <ul>
+                        <li><time class="date_purus"> {{date format='DD MMM YYYY'}}</time></li>
+                        <li><a class="comments_purus" href="{{url}}#disqus_thread" data-disqus-identifier="{{id}}">Comments</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="wrapper_purus">
+            <div class="postcontent_purus">
+                {{content}}
+            </div>
+
+            <footer class="article-footer_purus">
+                {{#author}}
+                    <section class="written-by_purus">
+                        <h6>Written by</h6>
+                        <div class="footerflex_purus">
+                            {{#if image}}
+                                <div class="authorimage_purus" style="background-image: url({{image}})"></div>
+                            {{/if}}
+                            <div class="about-author_purus">
+                                <h4 class="authorname_purus"><a href="{{@blog.url}}/author/{{slug}}">{{name}}</a></h4>
+                                {{#if bio}}<p class="authorbio_purus">{{bio}}</p>{{/if}}
+                                {{#if location}}<h5>{{location}}</h5>{{/if}}
+                                {{#if website}}<h5><a href="{{website}}" itemprop="url">{{website}}</a></h5>{{/if}}
+                                <br>
+                                {{#if twitter}}<a class="social-icon_purus" href="{{twitter_url}}"><i class="fa fa-twitter"><span class="hidden_purus">{{twitter}}</span></i></a>{{/if}}
+                                {{#if facebook}}<a class="social-icon_purus" href="{{facebook_url}}"><i class="fa fa-facebook"><span class="hidden_purus">{{facebook}}</span></i></a>{{/if}}
+                                
+                            </div>
+                        </div>
+                    </section>
+                {{/author}}
+                {{#if tags}}
+                    <section class="tags-post_purus">
+                        <h6>Tags</h6>
+                        <span>{{tags separator=""}}</span>
+                    </section>
+                {{/if}}
+            </footer>
+        </div>
+    </article>
+        
+    <div class="wrapper_purus">
+        <div class="disqusbox_purus">
+            <div id="disqus_thread"><form onsubmit="my.loadDisqus();return false;" class=formBlock><input class="cmd_purus" type=submit value="Load Comments"></form>
+            </div>
+
+                    {{! Disqus comments }}
+                    <script type="text/javascript">
+                    {{> custom/disqus this}}
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    var disqus_url = "{{url absolute="true"}}";
+                    var disqus_identifier = '{{post.id}}';
+                    var my = my || {};
+                    my.loadDisqus = function() {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    };
+                    </script>
+
+                    <noscript>Please enable javascript to <a rel="nofollow" href="http://disqus.com/?ref_noscript">discus this page, powered by Disqus.</a></noscript>
+                    <style scoped=scoped>
+                    @media print{
+                     .disqusbox{display:none}
+                    }
+                    </style>
+        </div>
+    </div>
+</main>
+
+<aside class="read-next_purus">
+    {{#next_post}}
+        <a class="frame-article_purus next-story_purus" href="{{url}}">
+            <section>
+                <h2>{{title}}</h2>
+                <p>{{excerpt words="19"}}&hellip;</p>
+                <time>{{date format='DD MMM YYYY'}}</time>
+            </section>
+            {{#if image}}<div style="background-image: url({{image}})"></div>{{/if}}
+        </a>
+    {{/next_post}}
+    {{#prev_post}}
+        <a class="frame-article_purus prev-story_purus" href="{{url}}">    
+            <section>
+                <h2>{{title}}</h2>
+                <p>{{excerpt words="19"}}&hellip;</p>
+                <time>{{date format='DD MMM YYYY'}}</time>
+            </section>
+            {{#if image}}<div style="background-image: url({{image}})"></div>{{/if}}
+        </a>
+    {{/prev_post}}
+</aside>
+
+<footer class="main-footer_purus" style="background-image: url({{author.cover}})">
+    <div class="wrapper-footer_purus">
+        <div class="center-footer_purus">
+            <h6>Share this post</h6>
+            <a target="_blank" href="https://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><i class="fa fa-twitter"></i><span class="hidden_purus">Twitter</span></a> 
+            <a target="_blank" href="https://www.facebook.com/sharer.php?u={{url absolute="true"}}"><i class="fa fa-facebook"></i><span class="hidden_purus">Facebook</span></a>
+            <a target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}"><i class="fa fa-google-plus"></i> <span class="hidden_purus">Google+</span></a>
+        </div>
+    {{/post}} 
+    </div>
+
+{{> footer}} 
+</footer>

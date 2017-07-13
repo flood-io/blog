@@ -1,0 +1,48 @@
+{{!< default}}
+    
+{{> header}}
+{{> menu}}
+
+<main role="main"> 
+  <div class="wrapper_purus">
+      
+    <section class="banner_purus">
+        <h1 class="blogtitle_purus">{{{@blog.title}}}</h1>      
+        <p class="description_purus">{{@blog.description}}</p>
+    </section>
+    
+    {{#if @blog.navigation}}
+        <section id="nav">
+            {{navigation}}
+        </section> 
+    {{/if}}
+      
+    {{#get "posts" filter="featured:true" limit="3" as |featured|}}
+        <section class="top_featured_purus">
+            {{#foreach featured}}
+                <article>
+                    <a href="{{url}}" class="inner-featured_purus {{#if image}}img-featured_purus" style="background-image: url({{image}}){{/if}}">
+                        <div>
+                            <h2>{{title}}</h2>
+                            <span class="read-more_purus">Read More</span>
+                        </div>
+                        <span class="star_purus"><i class="fa fa-star"></i></span>
+                    </a>
+                </article>  
+            {{/foreach}}
+        </section>
+    {{/get}}
+      
+    {{> loop}}
+    
+    </div>
+</main>
+    
+<footer class="main-footer_purus" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+    <div class="wrapper-footer_purus">
+        <div class="center-footer_purus">
+            {{> custom/social-media this}}
+        </div>
+    </div>
+    {{> footer}}
+</footer>          
