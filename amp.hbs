@@ -6,7 +6,6 @@
 
     {{!-- Page Meta --}}
     <title>{{meta_title}}</title>
-    <meta name="description" content="{{meta_description}}" />
 
     {{!-- Mobile Meta --}}
     <meta name="HandheldFriendly" content="True" />
@@ -760,7 +759,7 @@
             line-height: 1.55em;
             font-weight: 400;
         }
-        
+
         .site-footer section { display: inline-block; padding: 0 16px; }
 
         .site-footer a {
@@ -772,7 +771,7 @@
         .site-footer a:hover {
             text-decoration: underline;
         }
-    
+
     </style>
 
     {{!-- The AMP boilerplate --}}
@@ -803,9 +802,9 @@
                     <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="YYYY-MM-DD"}}</time>
                 </section>
             </header>
-            {{#if image}}
+            {{#if img_url feature_image}}
             <figure class="post-image">
-                <amp-img src="{{image absolute="true"}}" width="600" height="400" layout="responsive"></amp-img>
+                <amp-img src="{{img_url feature_image absolute="true"}}" width="600" height="400" layout="responsive"></amp-img>
             </figure>
             {{/if}}
             <section class="post-content">

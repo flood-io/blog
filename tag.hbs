@@ -1,6 +1,6 @@
 {{!< default}}
 
-<header id="header" class="default {{#if tag.image}}super-header{{/if}}">
+<header id="header" class="default {{#if tag.feature_image}}super-header{{/if}}">
     <button class="toggle-menu menu-left push-body">
     <i class="fa fa-bars"></i>
         {{#if @blog.logo}}
@@ -8,13 +8,13 @@
                 <img src="{{@blog.logo}}" alt="{{@blog.title}}" />
             </a>
         {{/if}}
-    </button> 
+    </button>
 </header>
 
 {{> menu}}
 
-<main role="main"> 
-    <div class="postheader_purus {{#if tag.image}} img-fullpage" style="background-image: url({{tag.image}}){{/if}}">
+<main role="main">
+    <div class="postheader_purus {{#if tag.feature_image}} img-fullpage" style="background-image: url({{img_url tag.feature_image}}){{/if}}">
         <div class="vertical_purus">
           <section class="inner_purus">
               <h1>{{tag.name}}</h1>
@@ -27,12 +27,12 @@
         {{> loop}}
     </div>
 </main>
- 
-<footer class="main-footer_purus" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+
+<footer class="main-footer_purus" {{#if @blog.cover_image}}style="background-image: url({{@blog.cover_image}})"{{/if}}>
     <div class="wrapper-footer_purus">
         <div class="center-footer_purus">
             {{> custom/social-media this}}
         </div>
     </div>
     {{> footer}}
-</footer> 
+</footer>

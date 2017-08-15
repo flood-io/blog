@@ -3,29 +3,29 @@
 {{> header}}
 {{> menu}}
 
-<main role="main"> 
+<main role="main">
   <div class="wrapper_purus">
-    {{#post}} 
+    {{#post}}
     <section class="banner_purus">
         <h1 class="posttitle_purus">{{title}}</h1>
     </section>
-    
+
     <section id="nav">
         {{navigation}}
-    </section>   
-      
+    </section>
+
     <div class="postcontent_purus">
-        {{content}} 
-    </div>  
+        {{content}}
+    </div>
     {{/post}}
   </div>
 </main>
-    
-<footer class="main-footer_purus" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+
+<footer class="main-footer_purus" {{#if @blog.cover_image}}style="background-image: url({{@blog.cover_image}})"{{/if}}>
     <div class="wrapper-footer_purus">
         <div class="center-footer_purus">
             {{> custom/social-media this}}
         </div>
     </div>
     {{> footer}}
-</footer>          
+</footer>

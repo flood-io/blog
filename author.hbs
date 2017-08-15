@@ -3,12 +3,12 @@
 {{> header}}
 {{> menu}}
 
-<main role="main"> 
+<main role="main">
   <div class="wrapper_purus">
       {{#author}}
       <section class="banner_purus">
-          {{#if image}}
-            <div class="authorimage_purus" style="background-image: url({{image}})"></div>
+          {{#if profile_image}}
+            <div class="authorimage_purus" style="background-image: url({{img_url profile_image}})"></div>
           {{/if}}
           <h1 class="authorname_purus">{{name}}</h1>
           {{#if bio}}<p class="authorbio_purus">{{bio}}</p>{{/if}}
@@ -25,7 +25,7 @@
 
         <article class="{{post_class}} article-list_purus">
             <ul>
-                <li><time>{{date format='DD MMM YYYY'}}</time></li>    
+                <li><time>{{date format='DD MMM YYYY'}}</time></li>
             </ul>
             <h2 class="posttitle_purus">
                 {{#if featured}}<span class="featured_purus"><i class="fa fa-star"></i></span>{{/if}}
@@ -38,25 +38,25 @@
             <span class="tags-index_purus"><i class="fa fa-tag"></i> {{tags separator=",&ensp;"}}</span>
             {{/if}}
         </article>
-    
+
     {{/foreach}}
-      
+
     {{#if pagination}}
     {{{pagination}}}
 	{{/if}}
-      
+
   </div>
 </main>
- 
-<footer class="main-footer_purus" style="background-image: url({{author.cover}})">
+
+<footer class="main-footer_purus" style="background-image: url({{author.cover_image}})">
     <div class="wrapper-footer_purus">
         <div class="center-footer_purus">
             <h6>Recommend this author</h6>
-            <a target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><i class="fa fa-twitter"></i><span class="hidden_purus">Twitter</span></a> 
+            <a target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><i class="fa fa-twitter"></i><span class="hidden_purus">Twitter</span></a>
             <a target="_blank" href="http://www.facebook.com/sharer.php?u={{url absolute="true"}}"><i class="fa fa-facebook"></i><span class="hidden_purus">Facebook</span></a>
             <a target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}"><i class="fa fa-google-plus"></i> <span class="hidden_purus">Google+</span></a>
         </div>
     </div>
     {{> footer}}
-    
+
 </footer>

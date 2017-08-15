@@ -1,8 +1,8 @@
 {{#foreach posts}}
-      
+
     <article class="{{post_class}} article-list_purus">
         <ul>
-            {{#if author.image}}<li><img class="author-thumb_purus" src="{{author.image}}" alt="Author image" nopin="nopin" /></li>{{/if}}
+            {{#if author.profile_image}}<li><img class="author-thumb_purus" src="{{img_url author.profile_image}}" alt="Author image" nopin="nopin" /></li>{{/if}}
             <li class="name-thumb_purus"><a href="{{@blog.url}}/author/{{author.slug}}"><span>{{author.name}}</span></a></li>
             <li><time>{{date format='DD MMM YYYY'}}</time></li>
         </ul>
@@ -17,9 +17,9 @@
             <span class="tags-index_purus"><i class="fa fa-tag"></i> {{tags separator=",&ensp;"}}</span>
         {{/if}}
     </article>
-    
-{{/foreach}}        
-            
+
+{{/foreach}}
+
 {{#if pagination}}
     {{{pagination}}}
 {{/if}}

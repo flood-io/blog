@@ -1,5 +1,31 @@
 {
-  "name": "Purus",
-  "version": "2.1.0",
-  "homepage": "http://golem.io"
+    "name": "purus",
+    "description": "Minimal, responsive & fully focused on content. Inspired by Medium.",
+    "demo": "https://purus.golem.io",
+    "version": "3.0.0",
+    "engines": {
+    "ghost": ">=1.0.0"
+    },
+    "license": "https://golem.io/license/",
+
+    "author": {
+        "name": "golem-io",
+        "email": "contact@golem.io",
+        "url": "https://golem.io"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Elegant Style"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "medium"
+    ],
+    "config": {
+        "posts_per_page": 8
+    }
 }
